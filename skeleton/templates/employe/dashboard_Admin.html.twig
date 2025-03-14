@@ -1,0 +1,24 @@
+
+{{form(formFormation)}}
+
+{% if allInscriptions != null %}
+{% for inscription in allInscriptions %}
+
+
+<span>La date de la Formation: {{inscription.formation.datedebut|date("d/m/Y")}}</span><br>
+<span>Nombre d'heure de cette formation: {{inscription.formation.nbreheures}} </span> <br>
+<span>Département de la formation: {{inscription.formation.departement}}</span>  <br>
+<span>Libelle du produit de cette formation:  {{inscription.formation.produit.libelle}}</span> <br>
+<span>Nom de l'employé :  {{inscription.employe.nom}}</span> <br>
+<span>Prenom de l'employé :  {{inscription.employe.prenom}}</span> <br>
+<span> Statut de l'inscription : {{inscription.statut}}</span> <br>
+<br>
+<a href= "{{path ('app_gestionInscription', {'statut' : 0, 'inscriptionID' : inscription.id})}}">Refuser</a> 
+<a href= "{{path ('app_gestionInscription', {'statut' : 1, 'inscriptionID' : inscription.id})}}">Accepter</a> <br>
+
+
+
+{% endfor %}
+{% endif %}
+
+
